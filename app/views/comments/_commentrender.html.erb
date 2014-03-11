@@ -1,0 +1,18 @@
+ <% if !@comment.id.nil? %>
+  <% comment = @comment %>
+ <% end %>
+ <div class="row-fluid">
+    <div class="span3">
+        
+        <p><%= image_tag comment.user.avatar, :size => '50' if !comment.user.avatar.blank? %>
+          <%= comment.user.name %></p>
+    </div>
+    <div class="span5">
+        <p><%= comment.body %></p>
+    </div>        
+
+           
+
+        
+         
+  </div> 

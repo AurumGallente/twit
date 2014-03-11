@@ -1,0 +1,3 @@
+$('#postcontainer').html(' ');
+$('#btn_new_post').show();
+$('#posts').prepend('<%= escape_javascript( render :partial => 'posts/postrender', :post => @post ) %>');

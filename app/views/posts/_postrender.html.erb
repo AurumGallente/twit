@@ -1,0 +1,25 @@
+ <% if @post %>
+  <% post = @post %>
+ <% end %>
+ <div class="row-fluid">
+    <div class="span3">
+        <h4><%= link_to post.title, post_comments_path(post) %></h4>
+        <p><%= image_tag post.user.avatar, :size => '50' if !post.user.avatar.blank? %>
+        <%= post.user.name %></p>  
+    </div>
+    <div class="span5">
+        <p><%= truncate(post.body, :length => 120, :separator => ' ') %></p>
+    </div>        
+
+           <%= post.comments.count %> comments</p>
+
+        
+        <% if current_user %>
+          <% if current_user.id == post.user.id %> 
+          <p>
+             <%= link_to 'Edit', edit_post_path(post) %>
+             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <% end %>
+        <% end %>
+          
+  </div> 

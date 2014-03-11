@@ -1,0 +1,10 @@
+<h1>Listing posts</h1>
+
+
+<div id="posts">
+  <%= render :partial => 'posts/postlist', :posts => @posts %>
+</div>
+<br/>
+<% link_to 'Load More Posts', posts_path(:page => @posts.next_page), :class => 'load-more-posts', :remote => true if @posts.next_page %>
+<br/>
+

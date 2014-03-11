@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twit</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'http://code.jquery.com/jquery-latest.min.js' %>  
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="well">
+    <a class="home" href="/">Home</a>
+    <div id="user_nav">
+      
+	<% if user_signed_in? %>
+      		<%= link_to 'edit pofile', edit_user_registration_path %>
+		<%= link_to 'log out', destroy_user_session_path, method: :delete %>
+	<% else %>
+		<%= link_to 'sign up', new_user_registration_path %>
+		<%= link_to 'log in', new_user_session_path %>
+	<% end %>
+	
+   </div>
+ </div>
+       <p class="notice"><%= notice %></p>
+       <p><%= alert %></p>
+       <div class="container"> 
+          <div class="row-fluid">
+            
+            <div class="span9">
+              <div id="postcontainer"></div>
+              <%= button_to "Add post", new_post_path, :id => 'btn_new_post', :class => 'btn btn-large btn-block btn-primary', :method => :get, :remote => true if current_user %>
+              <%= yield %>
+            </div>
+          <div class="span3">
+            <h4>Tag cloud</h4>
+              <% tag_cloud Post.tag_counts, %w[s m l] do |tag , css_class|   %>
+                <span><%= link_to tag.name, tag_path(tag.name), class:css_class %></span>
+              <% end %>
+          </div>
+       </div>
+
+
+</body>
+</html>
