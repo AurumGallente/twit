@@ -1,4 +1,4 @@
-var currentpage = 1;
+var currentpage = 2;
 
 
 $(window).scroll(function() {

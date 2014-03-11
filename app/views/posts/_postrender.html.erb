@@ -4,7 +4,7 @@
  <div class="row-fluid">
     <div class="span3">
         <h4><%= link_to post.title, post_comments_path(post) %></h4>
-        <p><%= image_tag post.user.avatar, :size => '50' if !post.user.avatar.blank? %>
+        <p><%= image_tag post.user.avatar_url(:thumb).to_s, :size => '50' if !post.user.avatar.blank? %>
         <%= post.user.name %></p>  
     </div>
     <div class="span5">

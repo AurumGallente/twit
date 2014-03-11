@@ -4,7 +4,7 @@
  <div class="row-fluid">
     <div class="span3">
         
-        <p><%= image_tag comment.user.avatar, :size => '50' if !comment.user.avatar.blank? %>
+        <p><%= image_tag comment.user.avatar_url(:thumb).to_s, :size => '50' if !comment.user.avatar.blank? %>
           <%= comment.user.name %></p>
     </div>
     <div class="span5">
